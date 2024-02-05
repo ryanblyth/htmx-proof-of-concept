@@ -12,8 +12,36 @@
 <body>
 
 	<h1 class="heading-1">HTMX Examples</h1>
+
 	<div class="container">
 		
+		<p>This is a proof of concept of the AJAX functionality I was looking for from the HTMX library. This library allows you to easily a load a page or specific elements from other pages on the same domain via AJAX. This page demsonstrates some simple, but powerful examples. This is the <a href="/example-content.html">source page</a> that the content is being loaded from. The source page is a full html page that can be navigated to and used and in a traditonal fashion, but can also be used to load specific, indivual content.</p>
+
+		<div class="examples-container">
+			<h2>Populate Element(div) with Entire Page Content</h2>
+			<p>This is using <span class="code-examples">hx-get</span> to GET the content and <span class="code-examples">hx-target</span> to select the HTML element that should be updated. This defaults to repacing with innerHMTL.</p>
+			<div class="button-container">
+				<button hx-get="/example-content.html" hx-target="#replace-with-page">Update Content</button>
+				<!-- There may be a better way to go back to the orginal content. -->
+				<button hx-get="/" hx-target="#replace-with-page" hx-select="#replace-with-page" hx-swap="outerHTML">Reset</button>
+			</div>
+			
+			<div id="replace-with-page" class="target-container">
+			</div>
+		</div>
+	
+		<div class="examples-container">
+			<h2>Populate Element(div) with Specfic Page Content</h2>
+			<p>The is is still using <span class="code-examples">hx-get</span> to GET the content and <span class="code-examples">hx-target</span> to select the HTML element that should be updated. However, <span class="code-examples">hx-select</span> is also being used to select a specific element from the source page. Note the title tag is updated by default on each GET. To prevent that from happeing <span class="code-examples">hx-swap="ignoreTitle:true"</span> can be placed on the same element that the relative <span class="code-examples">hx-get</span> is on.</p>
+			<div class="button-container">
+				<button hx-get="/example-content.html" hx-target="#replace-with-specific-element" hx-select="#specific-selection" hx-swap="ignoreTitle:true">Update Content</button>
+				<button hx-get="/" hx-target="#replace-with-specific-element" hx-select="#replace-with-specific-element" hx-swap="outerHTML">Reset</button>
+			</div>
+			
+			<div id="replace-with-specific-element" class="target-container replace-with-specific-element">
+			</div>
+		</div>
+
 	</div>
 
 </body>
