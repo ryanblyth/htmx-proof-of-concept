@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title hx-preserve="true">HTMX Example</title>
+		<script src="javascript.js"></script>
+		<link rel="stylesheet" href="base.css">
+		<link rel="stylesheet" href="style.css">
+		<script src="https://unpkg.com/htmx.org"></script>
+</head>
+<body>
+
+	<h1 class="heading-1">HTMX Examples</h1>
+
+	<div class="container">
+
+		<p>This is a proof of concept of the AJAX functionality I was looking for from the HTMX library. This library allows you to easily a load a page or specific elements from other pages on the same domain via AJAX. This page demsonstrates some simple, but powerful examples. This is the <a href="/example-content.html">source page</a> that the content is being loaded from. The source page is a full html page that can be navigated to and used and in a traditonal fashion, but can also be used to load specific, indivual content.</p>
+
+		<div class="examples-container">
+			<h2>Populate Element(div) with Entire Page Content</h2>
+			<p>This is using <span class="code-examples">hx-get</span> to GET the content and <span class="code-examples">hx-target</span> to select the HTML element that should be updated. This defaults to repacing with innerHMTL.</p>
+			<div class="button-container">
+				<button hx-get="/example-content.html" hx-target="#replace-with-page">Update Content</button>
+				<!-- There may be a better way to go back to the orginal content. -->
+				<button hx-get="/" hx-target="#replace-with-page" hx-select="#replace-with-page" hx-swap="outerHTML">Reset</button>
+			</div>
+			
+			<div id="replace-with-page" class="target-container">
+			</div>
+		</div>
+	
+		<div class="examples-container">
+			<h2>Populate Element(div) with Specfic Page Content</h2>
+			<p>The is is still using <span class="code-examples">hx-get</span> to GET the content and <span class="code-examples">hx-target</span> to select the HTML element that should be updated. However, <span class="code-examples">hx-select</span> is also being used to select a specific element from the source page. Note the title tag is updated by default on each GET. To prevent that from happeing <span class="code-examples">hx-swap="ignoreTitle:true"</span> can be placed on the same element that the relative <span class="code-examples">hx-get</span> is on.</p>
+			<div class="button-container">
+				<button hx-get="/example-content.html" hx-target="#replace-with-specific-element" hx-select="#specific-selection" hx-swap="ignoreTitle:true">Update Content</button>
+				<button hx-get="/" hx-target="#replace-with-specific-element" hx-select="#replace-with-specific-element" hx-swap="outerHTML">Reset</button>
+			</div>
+			
+			<div id="replace-with-specific-element" class="target-container replace-with-specific-element">
+			</div>
+		</div>
+
+		<div class="examples-container">
+			<h2>Populate Element(div) with Specfic Page Content and CSS Animation</h2>
+			<p>This is using classes to tigger a CSS animation. When the content is loaded, the <span class="code-examples">.replace-with-specific-element-css-animation .fade-in class</span> combination becomes present and the CSS animation starts.</p>
+			<div class="button-container">
+				<button hx-get="/example-content.html" hx-target="#replace-with-specific-element-animation" hx-select="#specific-selection" hx-swap="ignoreTitle:true">Update Content</button>
+				<!-- There may be a better way to go back to the orginal content. -->
+				<button hx-get="/" hx-target="#replace-with-specific-element-animation" hx-select="#replace-with-specific-element-animation" hx-swap="outerHTML">Reset</button>
+			</div>
+			
+			<div id="replace-with-specific-element-animation" class="target-container replace-with-specific-element-css-animation">
+			</div>
+		</div>
+
+		<div class="examples-container">
+			<h2>Populate Element(span) with Specific Inline Content</h2>
+			<p>This is an example replacing content inline with a span. I am not sure what the use case is for this yet, but wanted to test it.</p>
+			<p>Complete this sentence with <span id="add-content-item-1">...</span></p>
+			<div class="button-container">
+				<button hx-get="/example-content.html" hx-target="#add-content-item-1" hx-select="#content-item-1" hx-swap="ignoreTitle:true">Finish Sentence</button>
+				<button hx-get="/" hx-target="#add-content-item-1" hx-select="#add-content-item-1" hx-swap="ignoreTitle:true">Reset</button>
+			</div>
+		</div>
+
+		<div class="examples-container">
+			<h2>Head Support Extension</h2>
+			<p>To do: Add extended head support example. <a href="https://htmx.org/extensions/head-support/">https://htmx.org/extensions/head-support/</a></p>
+		</div>
+
+
+
+	</div>
+
+</body>
+</html>

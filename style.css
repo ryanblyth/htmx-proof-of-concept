@@ -1,0 +1,57 @@
+body {
+  background-color: #cecece;
+}
+
+.code-examples {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 2rem;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.examples-container {
+  border-bottom: 1px solid #333333;
+  padding: 0 1rem 1rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.button-container {
+  margin-bottom: 1rem;
+}
+
+.target-container {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #cecece;
+  background-color: #f3f3f3;
+}
+
+.heading-1 {
+  max-width: 1200px;
+  padding: 1rem 2rem;
+  margin: 0 auto;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+    padding: 0;
+  }
+  to { 
+    opacity: 1;
+    padding: 3rem;
+  }
+}
+
+.replace-with-specific-element-css-animation .fade-in {
+  animation: fadeIn 1s ease-out;
+  padding: 3rem;
+  background-color: #000000;
+  color: #ffffff;
+}
