@@ -14,7 +14,7 @@
 	<h1 class="heading-1">HTMX Examples</h1>
 
 	<div class="container">
-		
+
 		<p>This is a proof of concept of the AJAX functionality I was looking for from the HTMX library. This library allows you to easily a load a page or specific elements from other pages on the same domain via AJAX. This page demsonstrates some simple, but powerful examples. This is the <a href="/example-content.html">source page</a> that the content is being loaded from. The source page is a full html page that can be navigated to and used and in a traditonal fashion, but can also be used to load specific, indivual content.</p>
 
 		<div class="examples-container">
@@ -39,6 +39,19 @@
 			</div>
 			
 			<div id="replace-with-specific-element" class="target-container replace-with-specific-element">
+			</div>
+		</div>
+
+		<div class="examples-container">
+			<h2>Populate Element(div) with Specfic Page Content and CSS Animation</h2>
+			<p>This is using classes to tigger a CSS animation. When the content is loaded, the <span class="code-examples">.replace-with-specific-element-css-animation .fade-in class</span> combination becomes present and the CSS animation starts.</p>
+			<div class="button-container">
+				<button hx-get="/example-content.html" hx-target="#replace-with-specific-element-animation" hx-select="#specific-selection" hx-swap="ignoreTitle:true">Update Content</button>
+				<!-- There may be a better way to go back to the orginal content. -->
+				<button hx-get="/" hx-target="#replace-with-specific-element-animation" hx-select="#replace-with-specific-element-animation" hx-swap="outerHTML">Reset</button>
+			</div>
+			
+			<div id="replace-with-specific-element-animation" class="target-container replace-with-specific-element-css-animation">
 			</div>
 		</div>
 
