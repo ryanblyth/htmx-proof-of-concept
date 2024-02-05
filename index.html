@@ -55,6 +55,16 @@
 			</div>
 		</div>
 
+		<div class="examples-container">
+			<h2>Populate Element(span) with Specific Inline Content</h2>
+			<p>This is an example replacing content inline with a span. I am not sure what the use case is for this yet, but wanted to test it.</p>
+			<p>Complete this sentence with <span id="add-content-item-1">...</span></p>
+			<div class="button-container">
+				<button hx-get="/example-content.html" hx-target="#add-content-item-1" hx-select="#content-item-1" hx-swap="ignoreTitle:true">Finish Sentence</button>
+				<button hx-get="/" hx-target="#add-content-item-1" hx-select="#add-content-item-1" hx-swap="ignoreTitle:true">Reset</button>
+			</div>
+		</div>
+
 	</div>
 
 </body>
